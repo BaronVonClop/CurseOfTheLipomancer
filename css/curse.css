@@ -1,0 +1,115 @@
+textarea {
+    resize: none;
+}
+
+body{
+    background-color: black;
+    color: white;
+}
+
+input{
+    background-color: black;
+    color: white;
+}
+
+.charcreate{
+    border: 2px groove white;
+    position: fixed;
+    width: 1300px;
+    height: 800px;
+    left: 50%;
+    margin-left:-650px;
+}
+
+.abilitiesunlocked{
+    border: 1px solid white;
+    position: absolute;
+    width: 200px;
+    height: 500px;
+    left: 10%;
+    top: 10%;
+}
+
+.statdesc{
+    position: absolute;
+    width: 250px;
+    height: 400px;
+    right: 5%;
+    top: 10%;
+    background-color: black;
+    color: white;
+}
+
+.game{
+    display:none;
+    border: 2px solid white;
+    position: fixed;
+    width: 1300px;
+    height: 800px;
+    left: 50%;
+    margin-left:-650px;
+}
+
+.bottombar{
+    border: 1px solid purple;
+    position: fixed;
+    top: 96%;
+}
+
+.ability{
+    margin:0px;
+    color: red;
+}
+
+.ability-header{
+    margin:0px 0px 5px 0px;
+    color: blue;
+    font-weight: bold;
+}
+
+.deschead{
+    margin:0px 0px 5px 0px;
+    font-weight: bold;
+    font-size: 200%;
+}
+
+.maindesc{
+    border: 1px solid white;
+    width: 650px;
+    height: 800px;
+}
+
+.statusdiv{
+    border: 1px solid white;
+    position: absolute;
+    width: 325px;
+    height: 800px;
+    margin-right: -1px;
+    right: 0%;
+    top: 0%;
+}
+
+.statusname{
+    margin: 0px 0px 5px 0px;
+    font-weight: bold;
+    font-size: 150%;
+}
+
+.statdisplay{
+    margin: 0px 0px 2px 0px;
+}
+
+.progressbar{
+    width: 310px;
+    height: 19px;
+    background-color: gray;
+    border-radius: 13px;
+    padding: 3px;
+}
+
+.progressbar > div{
+    background-color: red;
+    width: 50%;
+    height: 20px;
+    border-radius: 10px;
+}
