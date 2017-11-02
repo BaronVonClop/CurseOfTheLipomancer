@@ -5,6 +5,7 @@
     <!---im gay!!!-->
     <link rel="stylesheet" type="text/css" href="css/curse.css">
     <script src="js/curse.js"></script>
+    <title>Curse of the Lipomancer</title>
 </head>
 
 <body>
@@ -20,7 +21,8 @@
     <option value="nightelf">Night Elf</option>
     <option value="worgen">Worgen</option>
 </select>
-    <br /><br /><p class="ability" onclick="showStrength()">Strength</p> <input id="strength" type="number" onclick="checkPointsRem()" value="8"/>
+    <br />
+    <br /><p class="ability" onclick="showStrength()">Strength</p> <input id="strength" type="number" onclick="checkPointsRem()" value="8"/>
     <br /><p class="ability" onclick="showAgility()">Agility</p><input id="agility" type="number" onclick="checkPointsRem()" value="8"/>
     <br /><p class="ability" onclick="showIntellect()">Intellect</p><input id="intellect" type="number" onclick="checkPointsRem()" value="8"/>
     <br /><p class="ability" onclick="showWisdom()">Wisdom</p><input id="wisdom" type="number" onclick="checkPointsRem()" value="8"/>
@@ -90,6 +92,10 @@
         <p class="statdisplay" id="wisdomdisplay">Wisdom: 8</p>
         <p class="statdisplay" id="staminadisplay">Stamina: 8</p>
         <p class="statdisplay" id="charismadisplay">Charisma: 8</p>
+
+        <button id="inventorybutton">Inventory</button>
+
+        <textarea rows="6" cols="42" id="statustext" class="statustext">Status text will appear here.</textarea>
 
     </div>
 
