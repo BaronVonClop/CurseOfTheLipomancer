@@ -14,6 +14,9 @@ var agility;
 var stamina;
 var wisdom;
 var charisma;
+var charScreenOpen = false;
+var storedDesc;
+var storedTitle;
 
 var locations = {
     "ValleyOfHonor":
@@ -134,6 +137,8 @@ function begingame(){
 function loadRoom(room){
     var WButton = document.getElementById("WButton");
     var EButton = document.getElementById("EButton");
+    var NButton = document.getElementById("NButton");
+    var SButton = document.getElementById("SButton");
     document.getElementById("deschead").innerHTML = locations[room]["title"];
     document.getElementById("descbody").innerHTML = locations[room]["desc"];
 
@@ -211,7 +216,35 @@ function loadRoom(room){
     }
 
 }
-
 function moveRoom(clicked){
     loadRoom(clicked.dataset.goto);
+}
+function showCharacter(){
+    var deschead = document.getElementById("deschead");
+    var descbody = document.getElementById("descbody");
+    if (charScreenOpen === true) {
+        charScreenOpen = false;
+        deschead.innerHTML = storedTitle;
+        descbody.innerHTML = storedDesc;
+        enableNav();
+    } else {
+        charScreenOpen = true;
+        storedTitle = deschead.innerHTML;
+        storedDesc = descbody.innerHTML;
+        deschead.innerHTML = pcname;
+        descbody.innerHTML = "You're a fat idiot, LOL."
+        disableNav();
+    }
+}
+function disableNav(){
+    NButton.disabled = true;
+    EButton.disabled = true;
+    WButton.disabled = true;
+    SButton.disabled = true;
+}
+function enableNav(){
+    NButton.disabled = false;
+    EButton.disabled = false;
+    WButton.disabled = false;
+    SButton.disabled = false;
 }
