@@ -89,6 +89,16 @@ input{
     top: 0%;
 }
 
+.navigationdiv{
+    border: 1px solid white;
+    position: absolute;
+    width: 325px;
+    height: 800px;
+    margin-left: -1px;
+    left: 0%;
+    top: 0%;
+}
+
 .statusname{
     margin: 0px 0px 5px 0px;
     font-weight: bold;
@@ -117,4 +127,14 @@ input{
 .statustext{
     color: white;
     background-color: black;
+}
+/*NavigationTableButtonHolder... if you were wondering*/
+.navtbh{
+    text-align: center;
+}
+
+.navbutton{
+    width: 100%;
+    background-color: black;
+    color: white;
 }
