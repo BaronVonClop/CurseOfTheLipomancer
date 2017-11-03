@@ -16,29 +16,29 @@ var wisdom;
 var charisma;
 
 var locations = {
-    "Orgrimmar":
+    "ValleyOfHonor":
         {
-        "ValleyOfHonor":
-            {
-                "south":"TheDrag",
-                "east":"WyvernsTail",
-                "title":"Valley Of Honor",
-                "desc":"It's really fucking dusty, thanks Orgrimmar"
-            },
-        "TheDrag":
-            {
-                "north":"ValleyOfHonor",
-                "title":"The Drag",
-                "desc":"IT FUCKIN DARK HOMIE"
-            },
-        "WyvernsTail":
-            {
-                "west":"ValleyOfHonor",
-                "title":"Wyvern's Tail",
-                "desc":"A shitty tavern."
-            }
+            "south":"TheDrag",
+            "east":"WyvernsTail",
+            "title":"Valley Of Honor",
+            "desc":"It's really fucking dusty, thanks Orgrimmar",
+            "zone":"Orgrimmar"
+        },
+    "TheDrag":
+        {
+            "north":"ValleyOfHonor",
+            "title":"The Drag",
+            "desc":"IT FUCKIN DARK HOMIE",
+            "zone":"Orgrimmar"
+        },
+    "WyvernsTail":
+        {
+            "west":"ValleyOfHonor",
+            "title":"Wyvern's Tail",
+            "desc":"A shitty tavern.",
+            "zone":"Orgrimmar"
         }
-}
+};
 
 function checkPointsRem(){
     strength = document.getElementById("strength").value;
@@ -129,9 +129,89 @@ function ccdone(){
 function begingame(){
     document.getElementById("statusname").innerHTML = pcname;
     document.getElementById("game").style.display="block";
-    loadRoom("Orgrimmar", "WyvernsTail");
+    loadRoom("WyvernsTail");
 }
-function loadRoom(zone, room){
-    document.getElementById("deschead").innerHTML = locations[zone][room]["title"];
-    document.getElementById("descbody").innerHTML = locations[zone][room]["desc"];
+function loadRoom(room){
+    var WButton = document.getElementById("WButton");
+    var EButton = document.getElementById("EButton");
+    document.getElementById("deschead").innerHTML = locations[room]["title"];
+    document.getElementById("descbody").innerHTML = locations[room]["desc"];
+
+    if(locations[room]["west"]){
+        WButton.innerHTML = locations[locations[room]["west"]]["title"];
+        WButton.dataset.goto = locations[room]["west"];
+        WButton.disabled = false;
+    } else {
+        WButton.innerHTML = "W";
+        WButton.dataset.goto = "NOWHERE";
+        WButton.disabled = true;
+    }
+    if(locations[room]["east"]){
+        EButton.innerHTML = locations[locations[room]["east"]]["title"];
+        EButton.dataset.goto = locations[room]["east"];
+        EButton.disabled = false;
+    } else {
+        EButton.innerHTML = "E";
+        EButton.dataset.goto = "NOWHERE";
+        EButton.disabled = true;
+    }
+    if(locations[room]["north"]){
+        NButton.innerHTML = locations[locations[room]["north"]]["title"];
+        NButton.dataset.goto = locations[room]["north"];
+        NButton.disabled = false;
+    } else {
+        NButton.innerHTML = "N";
+        NButton.dataset.goto = "NOWHERE";
+        NButton.disabled = true;
+    }
+    if(locations[room]["south"]){
+        SButton.innerHTML = locations[locations[room]["south"]]["title"];
+        SButton.dataset.goto = locations[room]["south"];
+        SButton.disabled = false;
+    } else {
+        SButton.innerHTML = "S";
+        SButton.dataset.goto = "NOWHERE";
+        SButton.disabled = true;
+    }
+    if(locations[room]["ne"]){
+        NEButton.innerHTML = locations[locations[room]["ne"]]["title"];
+        NEButton.dataset.goto = locations[room]["ne"];
+        NEButton.disabled = false;
+    } else {
+        NEButton.innerHTML = "NE";
+        NEButton.dataset.goto = "NOWHERE";
+        NEButton.disabled = true;
+    }
+    if(locations[room]["nw"]){
+        NWButton.innerHTML = locations[locations[room]["nw"]]["title"];
+        NWButton.dataset.goto = locations[room]["nw"];
+        NWButton.disabled = false;
+    } else {
+        NWButton.innerHTML = "NW";
+        NWButton.dataset.goto = "NOWHERE";
+        NWButton.disabled = true;
+    }
+    if(locations[room]["se"]){
+        SEButton.innerHTML = locations[locations[room]["se"]]["title"];
+        SEButton.dataset.goto = locations[room]["se"];
+        SEButton.disabled = false;
+    } else {
+        SEButton.innerHTML = "SE";
+        SEButton.dataset.goto = "NOWHERE";
+        SEButton.disabled = true;
+    }
+    if(locations[room]["sw"]){
+        SWButton.innerHTML = locations[locations[room]["sw"]]["title"];
+        SWButton.dataset.goto = locations[room]["sw"];
+        SWButton.disabled = false;
+    } else {
+        SWButton.innerHTML = "SW";
+        SWButton.dataset.goto = "NOWHERE";
+        SWButton.disabled = true;
+    }
+
+}
+
+function moveRoom(clicked){
+    loadRoom(clicked.dataset.goto);
 }
