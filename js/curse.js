@@ -1,12 +1,15 @@
 var pcname = "";
 var pcrace = "";
-var weight;
-var startWeight;
-var caloriesInGut;
-var caloriesDigested;
-var capacity;
-var fullness;
-var digestionRate;
+var weight = 180;
+var weightGained = 0;
+var startWeight = 180;
+var caloriesInGut = 100000;
+var caloriesDigested = 0;
+var capacity = 100;
+var fullness = 25;
+var digestionRate = 6.25;
+var time = 8;
+var day = 1;
 var pointsRem = 8;
 var strength;
 var intellect;
@@ -19,28 +22,55 @@ var storedDesc;
 var storedTitle;
 
 var locations = {
-    "ValleyOfHonor":
-        {
-            "south":"TheDrag",
-            "east":"WyvernsTail",
-            "title":"Valley Of Honor",
-            "desc":"It's really fucking dusty, thanks Orgrimmar",
-            "zone":"Orgrimmar"
+    //<Orgrimmar>
+    "ValleyOfHonor":{
+        "south":"TheDrag",
+        "east":"WyvernsTail",
+        "title":"Valley Of Honor",
+        "desc":"It's really fucking dusty, thanks Orgrimmar"
         },
-    "TheDrag":
-        {
-            "north":"ValleyOfHonor",
-            "title":"The Drag",
-            "desc":"IT FUCKIN DARK HOMIE",
-            "zone":"Orgrimmar"
+    "TheDrag":{
+        "north":"ValleyOfHonor",
+        "title":"The Drag",
+        "desc":"IT FUCKIN DARK HOMIE"
         },
-    "WyvernsTail":
-        {
-            "west":"ValleyOfHonor",
-            "title":"Wyvern's Tail",
-            "desc":"A shitty tavern.",
-            "zone":"Orgrimmar"
-        }
+    "WyvernsTail":{
+        "west":"ValleyOfHonor",
+        "title":"Wyvern's Tail",
+        "desc":"A shitty tavern."
+    },
+    //</Orgrimmar>
+    //<Stormwind>
+    "BlueRecluse":{
+        "sw":"MageQuarter",
+        "title":"Blue Recluse",
+        "desc":"Situated in the northern part of the Mage Quarter, the Blue Recluse is the main diner and tavern for" +
+        " the district."
+    },
+    "MageQuarter":{
+        "ne":"BlueRecluse",
+        "north":"LionsRest",
+        "east":"TradeDistrict",
+        "sw":"SlaughteredLamb",
+        "title":"Mage Quarter",
+        "desc":"Stormwind's Mage Quarter. Magic and shit, homie."
+    },
+    "LionsRest":{
+        "south":"MageQuarter",
+        "title":"Lion's Rest",
+        "desc":"The resting place for King Variyn Wrynn."
+    },
+    "SlaughteredLamb":{
+        "ne":"MageQuarter",
+        "title":"The Slaughtered Lamb",
+        "desc":"The dark, spooky alternative to the Blue Recluse."
+    },
+    "TradeDistrict":{
+        "west":"MageQuarter",
+        "title":"Trade District",
+        "desc":"The main hub for Stormwind's traders, you can find all manner of shops here."
+    }
+    //</Stormwind>
 };
 
 function checkPointsRem(){
@@ -109,6 +139,7 @@ function ccdone(){
     wisdom = document.getElementById("wisdom").value;
     charisma = document.getElementById("charisma").value;
 
+    document.getElementById("weightdisplay").innerHTML = "Weight: " + weight;
     document.getElementById("strengthdisplay").innerHTML = "Strength: " + strength;
     document.getElementById("agilitydisplay").innerHTML = "Agility: " + agility;
     document.getElementById("staminadisplay").innerHTML = "Stamina: " + stamina;
@@ -132,7 +163,7 @@ function ccdone(){
 function begingame(){
     document.getElementById("statusname").innerHTML = pcname;
     document.getElementById("game").style.display="block";
-    loadRoom("WyvernsTail");
+    loadRoom("BlueRecluse");
 }
 function loadRoom(room){
     var WButton = document.getElementById("WButton");
@@ -247,4 +278,32 @@ function enableNav(){
     EButton.disabled = false;
     WButton.disabled = false;
     SButton.disabled = false;
+}
+function wait(){
+    time ++;
+    if (time = 24){
+        time = 0;
+        day ++;
+    }
+    digest();
+
+}
+function digest(){
+    fullness -= digestionRate;
+    if (fullness < 0.01){
+        fullness = 0.01;
+    }
+    var fullnessPercentage = fullness / capacity * 100;
+    var fPString = "" + fullnessPercentage + "%";
+    document.getElementById("fullnessbar").style.width = fPString;
+
+    caloriesToCalc = caloriesInGut / digestionRate;
+    caloriesDigested += caloriesToCalc;
+    caloriesInGut -= caloriesToCalc;
+    calcWeight();
+}
+function calcWeight(){
+    weightGained = caloriesDigested / 3500;
+    weight = weightGained + startWeight;
+    document.getElementById("weightdisplay").innerHTML = "Weight: " + weight;
 }
