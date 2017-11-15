@@ -20,6 +20,10 @@ var charisma;
 var charScreenOpen = false;
 var storedDesc;
 var storedTitle;
+var playerLocation;
+var playerLocationJSON = $.getJSON("js/playerLocation.json", function(response){
+    playerLocation = response;
+});
 
 var locations = {
     //<Orgrimmar>
@@ -73,6 +77,7 @@ var locations = {
     //</Stormwind>
 };
 
+
 function checkPointsRem(){
     strength = document.getElementById("strength").value;
     intellect = document.getElementById("intellect").value;
@@ -97,19 +102,6 @@ function checkAbilities(){
         document.getElementById("abcleave").style.color= "green";
     }
 }
-function showMortalStrike(){
-    document.getElementById("statdescbox").value = "Mortal Strike\n\nStrike your enemy with a heavy blow. Uses a two handed weapon.";
-}
-function showExpand(){
-    document.getElementById("statdescbox").value = "Expand\n\nUsing magic, you have the ability to expand your armor and clothing to fit you no matter what your size is. You can ignore sizes when looting clothing, and will never outgrow what you are wearing, no matter how much weight is gained.";
-}
-function showSleightofHand(){
-    document.getElementById("statdescbox").value = "Sleight of Hand\n\nYour hands are deft and easily able to grab small objects without anyone noticing. At certain times, you will be able to change or completely bypass events when you have this skill.";
-}
-function showConsume(){
-    document.getElementById("statdescbox").value = "Consume\n\nYour ability to push aside stomach discomfort allows you to eat significantly more. This allows you to more easily bypass certain events, but is a double-edged sword; it also means you can be forced to eat more against your will, as well.";
-}
-
 function showCCDesc(id){
 
     if (id == "ccstrength"){
@@ -144,7 +136,6 @@ function showCCDesc(id){
         document.getelementById("statdescbox").value = "???";
     }
 }
-
 function ccdone(){
 
     pcname = document.getElementById("ccname").value;
