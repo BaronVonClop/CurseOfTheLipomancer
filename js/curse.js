@@ -79,15 +79,15 @@ var locations = {
 
 
 function checkPointsRem(){
-    strength = document.getElementById("strength").value;
-    intellect = document.getElementById("intellect").value;
-    agility = document.getElementById("agility").value;
-    stamina = document.getElementById("stamina").value;
-    wisdom = document.getElementById("wisdom").value;
-    charisma = document.getElementById("charisma").value;
+    strength = $("#strengthI").val();
+    intellect = $("#intellectI").val();
+    agility = $("#agilityI").val();
+    stamina = $("#staminaI").val();
+    wisdom = $("#wisdomI").val();
+    charisma = $("#charismaI").val();
     pointsRem = 56 - strength - intellect - agility - stamina - wisdom - charisma;
 
-    document.getElementById("pointsrem").innerHTML = "Points remaining: " + pointsRem
+    $("#pointsrem").html("Points remaining: " + pointsRem);
 
     checkAbilities();
 }
