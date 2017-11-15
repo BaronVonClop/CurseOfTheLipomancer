@@ -167,6 +167,7 @@ function ccdone(){
     begingame();
 }
 function begingame(){
+    generateWorld(5,5);
     document.getElementById("statusname").innerHTML = pcname;
     document.getElementById("game").style.display="block";
     loadRoom("BlueRecluse");
@@ -321,23 +322,29 @@ var randomWorld = {};
 var randomZones = {};
 
 function generateWorld(x, y){
+    //Generates the world.
     var zones = x * y;
     var whichZone = 1;
-
+    //Generate the zones. Each world tile gets a 10x10 zone.
     for (var i = 0; i <= zones; i ++){
+        //Generate one zone for every world tile.
         randomZones[i] = {};
         for (var zh = 0; zh < 10; zh++){
+            //Create the array for each width.
             randomZones[i][zh] = {};
             for (var zw = 0; zw < 10; zw++){
+                //Create an entry for each tile, and fill it with a random type.
                 var type = generateRandomZoneType();
                 randomZones[i][zh][zw] = {"Type":type};
             }
         }
     }
-
+    //With sufficient zones made, we can now generate the world.
     for (var h = 0; h < x; h++){
+        //Create an array for each column.
         randomWorld[h] = {};
         for (var w = 0; w < y; w++){
+            //Fill each world tile with a unique, random zone.
             randomWorld[h][w] = {"zone":randomZones[whichZone]};
             whichZone++;
         }
@@ -345,6 +352,8 @@ function generateWorld(x, y){
 }
 
 function generateRandomZoneType(){
+    //Picks a tile type out of the list of possibilities. Will need more variation later; some tiles will be rarer
+    //than others. As of now, all areas have even chance.
     var zoneTypes = ["Shithole", "City", "Dildo Store", "Field of Dicks"];
     return zoneTypes[Math.floor(Math.random() * zoneTypes.length)];;
 }
