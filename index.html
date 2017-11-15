@@ -22,41 +22,41 @@
     <option value="worgen">Worgen</option>
 </select>
     <br />
-    <br /><p class="ability" onclick="showStrength()">Strength</p> <input id="strength" type="number" onclick="checkPointsRem()" value="8"/>
-    <br /><p class="ability" onclick="showAgility()">Agility</p><input id="agility" type="number" onclick="checkPointsRem()" value="8"/>
-    <br /><p class="ability" onclick="showIntellect()">Intellect</p><input id="intellect" type="number" onclick="checkPointsRem()" value="8"/>
-    <br /><p class="ability" onclick="showWisdom()">Wisdom</p><input id="wisdom" type="number" onclick="checkPointsRem()" value="8"/>
-    <br /><p class="ability" onclick="showStamina()">Stamina</p><input id="stamina" type="number" onclick="checkPointsRem()" value="8"/>
-    <br /><p class="ability" onclick="showCharisma()">Charisma</p><input id="charisma" type="number" onclick="checkPointsRem()" value="8"/>
+    <br /><p class="ability" id="ccstrength" onclick="showCCDesc(this.id)">Strength</p> <input id="strength" type="number" onclick="checkPointsRem()" value="8"/>
+    <br /><p class="ability" id="ccagility" onclick="showCCDesc(this.id)">Agility</p><input id="agility" type="number" onclick="checkPointsRem()" value="8"/>
+    <br /><p class="ability" id="ccintellect" onclick="showCCDesc(this.id)">Intellect</p><input id="intellect" type="number" onclick="checkPointsRem()" value="8"/>
+    <br /><p class="ability" id="ccwisdom" onclick="showCCDesc(this.id)">Wisdom</p><input id="wisdom" type="number" onclick="checkPointsRem()" value="8"/>
+    <br /><p class="ability" id="ccstamina" onclick="showCCDesc(this.id)">Stamina</p><input id="stamina" type="number" onclick="checkPointsRem()" value="8"/>
+    <br /><p class="ability" id="cccharisma" onclick="showCCDesc(this.id)">Charisma</p><input id="charisma" type="number" onclick="checkPointsRem()" value="8"/>
     <br /><p id="pointsrem">Points remaining: 8</p>
     <button class="ccdone" onclick="ccdone()">Done</button>
 
     <textarea class="statdesc" id="statdescbox">Click a stat or ability for more info.</textarea>
     <div class="abilitiesunlocked" id="abilitiesunlocked">
         <p class="ability-header">Strength Based</p>
-        <p class="ability" id="abmortalstrike" onclick="showMortalStrike()">(10) Mortal Strike</p>
-        <p class="ability" id="abcleave">(16) Cleave</p>
-        <p class="ability" id="abslam">(22) Slam</p>
+        <p class="ability" id="abmortalstrike" onclick="showCCDesc(this.id)">(10) Mortal Strike</p>
+        <p class="ability" id="abcleave" onclick="showCCDesc(this.id)">(16) Cleave</p>
+        <p class="ability" id="abslam" onclick="showCCDesc(this.id)">(22) Slam</p>
         <p class="ability-header">Agility Based</p>
-        <p class="ability" id="absinisterstrike">(10) Sinister Strike</p>
-        <p class="ability" id="ablightstep">(16) Lightstep</p>
-        <p class="ability" id="abslightofhand" onclick="showSleightofHand()">(22) Sleight of Hand</p>
+        <p class="ability" id="absinisterstrike" onclick="showCCDesc(this.id)">(10) Sinister Strike</p>
+        <p class="ability" id="ablightstep" onclick="showCCDesc(this.id)">(16) Lightstep</p>
+        <p class="ability" id="abslightofhand" onclick="showCCDesc(this.id)">(22) Sleight of Hand</p>
         <p class="ability-header">Intellect Based</p>
-        <p class="ability" id="abfireball">(10) Fireball</p>
-        <p class="ability" id="abkhadgarsknock">(16) Khadgar's Knock</p>
-        <p class="ability" id="abtimewarp">(22) Time Warp</p>
+        <p class="ability" id="abfireball" onclick="showCCDesc(this.id)">(10) Fireball</p>
+        <p class="ability" id="abkhadgarsknock" onclick="showCCDesc(this.id)">(16) Khadgar's Knock</p>
+        <p class="ability" id="abtimewarp" onclick="showCCDesc(this.id)">(22) Time Warp</p>
         <p class="ability-header">Wisdom Based</p>
-        <p class="ability" id="abplea">(10) Plea</p>
-        <p class="ability" id="abdispel">(16) Dispel</p>
-        <p class="ability" id="abexpand" onclick="showExpand()">(22) Expand</p>
+        <p class="ability" id="abplea" onclick="showCCDesc(this.id)">(10) Plea</p>
+        <p class="ability" id="abdispel" onclick="showCCDesc(this.id)">(16) Dispel</p>
+        <p class="ability" id="abexpand"  onclick="showCCDesc(this.id)">(22) Expand</p>
         <p class="ability-header">Stamina Based</p>
-        <p class="ability" id="abconsume" onclick="showConsume()">(10) Consume</p>
-        <p class="ability" id="abignorepain">(16) Ignore Pain</p>
-        <p class="ability" id="abcleave">Cleave</p>
+        <p class="ability" id="abconsume"  onclick="showCCDesc(this.id)">(10) Consume</p>
+        <p class="ability" id="abignorepain" onclick="showCCDesc(this.id)">(16) Ignore Pain</p>
+        <p class="ability" id="abcleave" onclick="showCCDesc(this.id)">Cleave</p>
         <p class="ability-header">Charisma Based</p>
-        <p class="ability" id="abcleave">(10) Vicious Mockery</p>
-        <p class="ability" id="abcleave">Cleave</p>
-        <p class="ability" id="abcleave">Cleave</p>
+        <p class="ability" id="abcleave" onclick="showCCDesc(this.id)">(10) Vicious Mockery</p>
+        <p class="ability" id="abcleave" onclick="showCCDesc(this.id)">Cleave</p>
+        <p class="ability" id="abcleave" onclick="showCCDesc(this.id)">Cleave</p>
     </div>
 
 </div>
