@@ -315,14 +315,36 @@ function calcWeight(){
 }
 
 //EXPERIMENTAL WORLDGEN SHIT HO
+//DANGEROUS FUCKIN TERRITORY BOIS
 
 var randomWorld = {};
+var randomZones = {};
 
 function generateWorld(x, y){
+    var zones = x * y;
+    var whichZone = 1;
+
+    for (var i = 0; i <= zones; i ++){
+        randomZones[i] = {};
+        for (var zh = 0; zh < 10; zh++){
+            randomZones[i][zh] = {};
+            for (var zw = 0; zw < 10; zw++){
+                var type = generateRandomZoneType();
+                randomZones[i][zh][zw] = {"Type":type};
+            }
+        }
+    }
+
     for (var h = 0; h < x; h++){
         randomWorld[h] = {};
         for (var w = 0; w < y; w++){
-            randomWorld[h][w] = {};
+            randomWorld[h][w] = {"zone":randomZones[whichZone]};
+            whichZone++;
         }
     }
+}
+
+function generateRandomZoneType(){
+    var zoneTypes = ["Shithole", "City", "Dildo Store", "Field of Dicks"];
+    return zoneTypes[Math.floor(Math.random() * zoneTypes.length)];;
 }
