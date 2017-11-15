@@ -24,7 +24,6 @@ var playerLocation;
 var playerLocationJSON = $.getJSON("js/playerLocation.json", function(response){
     playerLocation = response;
 });
-
 var locations = {
     //<Orgrimmar>
     "ValleyOfHonor":{
@@ -76,8 +75,6 @@ var locations = {
     }
     //</Stormwind>
 };
-
-
 function checkPointsRem(){
     strength = $("#strengthI").val();
     intellect = $("#intellectI").val();
@@ -315,4 +312,17 @@ function calcWeight(){
     weightGained = caloriesDigested / 3500;
     weight = weightGained + startWeight;
     document.getElementById("weightdisplay").innerHTML = "Weight: " + weight;
+}
+
+//EXPERIMENTAL WORLDGEN SHIT HO
+
+var randomWorld = {};
+
+function generateWorld(x, y){
+    for (var h = 0; h < x; h++){
+        randomWorld[h] = {};
+        for (var w = 0; w < y; w++){
+            randomWorld[h][w] = {};
+        }
+    }
 }
