@@ -339,6 +339,13 @@ function generateWorld(x, y){
             }
         }
     }
+    //Test at creating a city within a zone. Picks a random zone, x, y, and makes that a city.
+    var cityZone = getRandomInt(1, zones);
+    var cityNWTileX = getRandomInt(1, 9);
+    var cityNWTileY = getRandomInt(1, 9);
+    console.log("" + cityZone + cityNWTileX + cityNWTileY)
+    randomZones[cityZone][cityNWTileX][cityNWTileY] = {"Type":"I AM THE CITY CENTER"}
+
     //With sufficient zones made, we can now generate the world.
     for (var h = 0; h < x; h++){
         //Create an array for each column.
@@ -355,5 +362,11 @@ function generateRandomZoneType(){
     //Picks a tile type out of the list of possibilities. Will need more variation later; some tiles will be rarer
     //than others. As of now, all areas have even chance.
     var zoneTypes = ["Shithole", "City", "Dildo Store", "Field of Dicks"];
-    return zoneTypes[Math.floor(Math.random() * zoneTypes.length)];;
+    return zoneTypes[Math.floor(Math.random() * zoneTypes.length)];
+}
+
+function getRandomInt(min, max){
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1)) + min;
 }
