@@ -21,6 +21,8 @@ var charScreenOpen = false;
 var storedDesc;
 var storedTitle;
 var playerLocation;
+var playerLocationX;
+var playerLocationY;
 var worldWidth = 5;
 var worldLength = 5;
 var playerLocationJSON = $.getJSON("js/playerLocation.json", function(response){
@@ -356,13 +358,27 @@ function generateWorld(x, y){
     }
 }
 
+var cityZone = getRandomInt(0, (worldLength * worldWidth));
+var startTileX = getRandomInt(0, 9);
+var startTileY = getRandomInt(0, 9);
+
 function placeImportantTiles(){
-    //Test at creating a city within a zone. Picks a random zone, x, y, and makes that the player start.
-    var cityZone = getRandomInt(1, (worldLength * worldWidth));
-    var startTileX = getRandomInt(0, 9);
-    var startTileY = getRandomInt(0, 9);
-    console.log("" + cityZone + startTileX + startTileY)
+    //Test at creating a areas within a zone randomly.
+    // Picks a random zone, x, y, and makes that the player start.
+    console.log("Player beginning in zone: " + cityZone + " coords:" + startTileX + "," + startTileY)
     randomZones[cityZone][startTileX][startTileY] = {"Type":"PLAYER START"}
+
+    //Regenerate random locations, and then place a town.
+    pickRandomLocations();
+    console.log("Placing IM GAY TOWN's NW corner in zone: " + cityZone + " coords:" + startTileX + "," + startTileY)
+    for (var i = 0; i < 5; i++){
+        randomZones[cityZone][startTileX][startTileY] = {"Type":"IM GAY TOWN"};
+        for (var z = 0; z < 5; z++){
+            var moveY = startTileY + z;
+            randomZones[cityZone][startTileX][moveY] = {"Type":"IM GAY TOWN"};
+        }
+        startTileX++;
+    }
 }
 
 function generateRandomZoneType(){
@@ -376,4 +392,10 @@ function getRandomInt(min, max){
     min = Math.ceil(min);
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+function pickRandomLocations(){
+    cityZone = getRandomInt(0, (worldLength * worldWidth));
+    startTileX = getRandomInt(0, 9);
+    startTileY = getRandomInt(0, 9);
 }
